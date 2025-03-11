@@ -1,0 +1,17 @@
+.redtext{
+    color:lightcoral;
+    font-family: Helvetica;
+    font-size: 24;
+}
+
+#linksstyle{
+    color:green;
+    font-family: Lucida;
+    font-size: 35;
+}
+
+.hide{
+    color:lightgoldenrodyellow;
+    background-color:lightgoldenrodyellow;
+    font-size: 50;
+}
