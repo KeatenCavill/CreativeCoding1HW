@@ -1,0 +1,101 @@
+<html>
+    <title>The Cooler Website</title>
+<head>
+    <link rel="stylesheet" type="text/css" href="mainstyle.css">
+    <style>
+        body{
+                background-color:aliceblue;
+            }
+            
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+    <script>
+        function getData() {
+            var First = document.getElementById("firstname").value;
+            var Middle = document.getElementById("middlename").value;
+            var Last = document.getElementById("lastname").value;
+            var Email = document.getElementById("email").value;
+
+            window.alert("First Name: " + First + " Middle Name: " + Middle + " Last Name: " + Last + " and Email: " + Email);
+            document.getElementById("finalResult").innerHTML = "First Name: " + First + " Middle Name: " + Middle + " Last Name: " + Last + " and Email: " + Email;
+        }
+
+        function fool() {
+            window.alert("You Fool >:) - I was the fake submit button");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("contactform").addEventListener("submit", function (event) {
+                let requiredFields = [
+                    { id: "firstname", type: "text" },
+                    { id: "middlename", type: "text" },
+                    { id: "lastname", type: "text" },
+                    { id: "email", type: "text" }
+                ];
+
+                let firstEmptyField = null;
+                let isFormValid = true;
+
+                for (let i = 0; i < requiredFields.length; i++) {
+                    let field = document.getElementById(requiredFields[i].id);
+                    field.classList.remove("error"); // Remove previous error highlighting
+
+                    if (requiredFields[i].type === "text" && field.value.trim() === "") {
+                        field.classList.add("error"); // Highlight empty field in red
+                        if (!firstEmptyField) firstEmptyField = field;
+                        isFormValid = false;
+                    }
+                }
+
+                if (!isFormValid) {
+                    alert("Error: All required fields (First Name, Middle Name, Last Name, and Email) must be filled out.");
+                    firstEmptyField.focus();
+                    event.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>Ahh the cooler sight... </h3>
+    <p>You think you could fill out this form while you’re here?</p>
+    
+    <form id="contactform">
+        <label class="redtext">First Name: </label> <input type="text" id="firstname"><br>
+        <label class="redtext">Middle Name: </label> <input type="text" id="middlename"><br>
+        <label class="redtext">Last Name: </label> <input type="text" id="lastname"><br>
+        
+        <p>What is your favorite type of cabbage? There is a correct answer to this.</p>
+        <select>
+            <option value="cgc">Conical Green Cabbage</option>
+                <option value="crc">Conical Red Cabbage</option>
+                <option value="llgc">Loose Leaf Green Cabbage</option>
+                <option value="llrc">Loose Leaf Red Cabbage</option>
+                <option value="b">Broccoli....</option>
+        </select><br>
+
+        <label>Email: </label> <input type="text" id="email"><br>
+
+        <p>Favorite prime numbers?</p>
+        <input type="checkbox" name="prime" value="2">2<br>
+        <input type="checkbox" name="prime" value="3">3<br>
+        <input type="checkbox" name="prime" value="5">5<br>
+        <input type="checkbox" name="prime" value="7">7<br>
+        <input type="checkbox" name="prime" value="11">11<br>
+
+        <p>Name of your favorite sibling (if you’re an only child, pick yourself): <input type="text"></p>
+        <input type="checkbox" name="agreement" value="1">By checking this box, you allow me to not use your info... I don’t have access to it anyway, but I just want to make sure.<br>
+
+        <button type="button" onclick="fool(); window.location.reload()">Click me, I’m the submit button</button>
+        <button type="submit">No, this is the REAL submit button</button>
+    </form>
+
+    <div id="finalResult"></div>
+    <a href="index.html" id="linksstyle">Go back?</a> | <a href="page2.html" id="linksstyle">Go to the less cool page D:</a> <br>
+    <img src="cabbage_with_pen.png"/> <br>
+        go back to page 1 and press ctrl + a
+        
+</body>
+</html>
