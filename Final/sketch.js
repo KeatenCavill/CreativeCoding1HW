@@ -24,7 +24,7 @@ let totalZombieFrames = 9;
 
 function preload() {
   for (let i = 1; i <= totalZombieFrames; i++) {
-    let numStr = nf(i, 2); // ensures two-digit format like 01, 02, etc.
+    let numStr = nf(i); // ensures two-digit format like 01, 02, etc.
     zombieFrames.push(loadImage("Zombie_walk/zombie_walk" + numStr + ".png"));
   }
 }
